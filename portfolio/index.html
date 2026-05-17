@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basant Khaled | Portfolio</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#7C3AED" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3 { font-family: 'Syne', sans-serif; }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #7C3AED 0%, #9333EA 60%, #A855F7 100%);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.6s;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+<!-- HERO -->
+<section class="hero-bg text-white pt-24 pb-20">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+
+    <div class="flex-1 reveal">
+      <p class="uppercase text-sm opacity-80 mb-4">UI/UX Designer & Frontend Developer</p>
+
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+        I Design & Build <br/>
+        Digital Experiences <br/>
+        That Convert
+      </h1>
+
+      <p class="text-white/80 text-lg mb-8 max-w-md">
+        Creating fast, modern, and user-centered interfaces that actually deliver results.
+      </p>
+
+      <div class="flex gap-4">
+        <a href="#projects" class="bg-white text-purple-700 px-6 py-3 rounded-lg font-semibold">
+          See My Work
+        </a>
+        <a href="#contact" class="border border-white px-6 py-3 rounded-lg">
+          Let's Talk
+        </a>
+      </div>
+    </div>
+
+    <div class="flex-1 reveal">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
+           class="rounded-2xl shadow-2xl"/>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-10">Projects</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold mb-2">Dashboard UI</h3>
+        <p class="text-gray-500 text-sm mb-4">Analytics dashboard design</p>
+        <a href="#" class="bg-black text-white px-4 py-2 rounded">View</a>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold mb-2">Landing Page</h3>
+        <p class="text-gray-500 text-sm mb-4">Marketing design</p>
+        <a href="#" class="bg-black text-white px-4 py-2 rounded">View</a>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow">
+        <h3 class="font-bold mb-2">E-commerce</h3>
+        <p class="text-gray-500 text-sm mb-4">Shopping experience</p>
+        <a href="#" class="bg-black text-white px-4 py-2 rounded">View</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-20 bg-purple-700 text-white text-center">
+  <h2 class="text-3xl font-bold mb-4">Let's Work Together</h2>
+  <p class="mb-6">Got a project or idea? Let's build something great.</p>
+  <a href="mailto:hello@email.com" class="bg-white text-purple-700 px-6 py-3 rounded-lg font-semibold">
+    Get In Touch
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-400 text-center py-6 text-sm">
+  © 2026 Basant Khaled
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js');
+    });
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
